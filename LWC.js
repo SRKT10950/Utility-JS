@@ -132,6 +132,21 @@ import pageOne from './pageOne.html';
             this.showToast('Error : ' + errorName, errorMg, 'error', false);
         }
     }
+//For standard toast
+import { ShowToastEvent } from 'lightning/platformShowToastEvent';
+
+showToast(title, msg, typeOfToast, isSticky) {
+		const eve = new ShowToastEvent({
+			title: title,
+			message: msg,
+			variant: typeOfToast,
+			mode: isSticky ? 'sticky' : 'dismissible'
+		});
+
+		this.dispatchEvent(eve);
+    }
+
+//For custom toast
 /**
      * This function is used to show a toast message on the screen
      * @param title - The title of the toast
