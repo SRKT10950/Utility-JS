@@ -134,26 +134,31 @@ import pageOne from './pageOne.html';
     }
 //For standard toast
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
-
-showToast(title, msg, typeOfToast, isSticky) {
+    /**
+     * This function is used to show a toast message on the screen
+     * @param {String}title - The title of the toast message.
+     * @param {String}msg - The message you want to display in the toast.
+     * @param {String}typeOfToast - This is the type of toast you want to show. It can be one of the following:
+     * @param {boolean}isSticky - If you want the toast to be sticky, set this to true.
+     */
+	showToast(title, msg, typeOfToast, isSticky) {
 		const eve = new ShowToastEvent({
 			title: title,
 			message: msg,
 			variant: typeOfToast,
-			mode: isSticky ? 'sticky' : 'dismissible'
+			mode: isSticky===true ? 'sticky' : 'dismissible'
 		});
-
 		this.dispatchEvent(eve);
-    }
+    	}
 
 //For custom toast
-/**
-     * This function is used to show a toast message on the screen
-     * @param title - The title of the toast
-     * @param msg - The message you want to display in the toast.
-     * @param typeOfToast - This is the type of toast you want to show. It can be one of the following:
-     * @param isSticky - If true, the toast will not disappear after a few seconds.
-     */
-    showToast(title, msg, typeOfToast, isSticky) {
+	/**
+     	* This function is used to show a toast message on the screen
+     	* @param {String}title - The title of the toast message.
+     	* @param {String}msg - The message you want to display in the toast.
+     	* @param {String}typeOfToast - This is the type of toast you want to show. It can be one of the following:
+     	* @param {boolean}isSticky - If you want the toast to be sticky, set this to true.
+     	*/
+    	showToast(title, msg, typeOfToast, isSticky) {
         this.template.querySelector('c-custom-toast').showToast(title, msg, typeOfToast, isSticky);
-    }
+    	}
