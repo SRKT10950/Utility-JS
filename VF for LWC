@@ -1,4 +1,32 @@
- <style>
+<apex:page showHeader="false" sidebar="false" standardStylesheets="false">
+    <html>
+    <head>
+      <meta charset="utf-8" />
+      <meta http-equiv="x-ua-compatible" content="ie=edge" />
+      <title>LWC Component</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+       <!-- Import the Design System style sheet -->
+       <apex:slds />
+    </head>
+    <apex:includeLightning />
+    <body>
+        <div id="LightningComponentid" />
+    </body>
+</html>
+    <script>
+        $Lightning.use("c:webLeadApp", function () {
+            $Lightning.createComponent("c:webLead",
+                {
+                    contactid : '{!$CurrentPage.parameters.id}',
+                },
+                "LightningComponentid", // the Id of div tag where your component will be rendered
+                function (cmp) {
+                    console.log('Calling the LWC Component');
+                });
+        });
+    </script>
+    <style>
         .slds-popover__body,
         .slds-popover__footer,
         .slds-popover__header {
@@ -77,3 +105,4 @@
         }
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     </style>
+</apex:page>
